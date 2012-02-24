@@ -51,25 +51,28 @@
       ]]))
 
 
-(defpartial home []
+(defpartial home [{:keys [topic date location]}]
   (base "Home"
-      [:section.summary
-       [:p
-        (link-to "/" "Roc Lisp")
-        " is a group of programmers in "
-        [:br]
-        (link-to "http://rocwiki.org/"
-                 "Rochester, New York")
-        " who meet up to talk about the "
-        [:br]
-        (link-to "http://en.wikipedia.org/wiki/Lisp_(programming_language)"
-                 "Lisp programming language")]]
+        [:section.summary
+         [:p
+          (link-to "/" "Roc Lisp")
+          " is a group of programmers in "
+          [:br]
+          (link-to "http://rocwiki.org/"
+                   "Rochester, New York")
+          " who meet up to talk about the "
+          [:br]
+          (link-to "http://en.wikipedia.org/wiki/Lisp_(programming_language)"
+                   "Lisp programming language")]]
         [:section.meeting
          [:p.label "Next Meeting"]
-         [:p.date "Thursday, February 23, 2012 at 6 PM"]
-         [:p.title "Topic: To be Determined &hellip;"]
-         [:p.location "..."]
-         [:p.sponsor "..."]]
+         [:p.date
+          (or date "Some time in the future…")]
+         [:p.title
+          "Topic: "
+          (or topic "To be Determined")]
+         (when-let [{:keys [href title]} location]
+           [:p.location " at " (link-to href title)])]
         [:section.subscribe
          [:p
           "To subscribe to the mailing list send a blank email to "
@@ -78,11 +81,11 @@
         [:section.inspiration
          [:blockquote
           [:p.quote "
-            “LISP is worth learning for a different reason: the profound
-            enlightenment experience you will have when you finally get it.
-            That experience will make you a better programmer for the rest of
-            your days, even if you never actually use LISP itself a lot.”
-           "
+           “LISP is worth learning for a different reason: the profound
+                    enlightenment experience you will have when you finally get it.
+                    That experience will make you a better programmer for the rest of
+                    your days, even if you never actually use LISP itself a lot.”
+                    "
            ]
           [:div.source "Eric S. Raymond"]]]
         ))
