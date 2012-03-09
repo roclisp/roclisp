@@ -5,7 +5,7 @@
 
 (server/load-views "src/roclisp/views/")
 
-(server/add-middleware expose-metrics-as-json "/know/a/metrics/")
+(server/add-middleware expose-metrics-as-json)
 
 (defn -main [& m]
   (let [mode (keyword (or (first m) :dev))
