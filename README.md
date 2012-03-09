@@ -1,6 +1,6 @@
 # roclisp
 
-A website written in noir. 
+A website written in noir.
 
 ## Usage
 
