@@ -1,7 +1,11 @@
 (ns roclisp.server
+  (:use [metrics.ring.expose :only (expose-metrics-as-json)])
   (:require [noir.server :as server]))
 
+
 (server/load-views "src/roclisp/views/")
+
+(server/add-middleware expose-metrics-as-json "/know/a/metrics/")
 
 (defn -main [& m]
   (let [mode (keyword (or (first m) :dev))
