@@ -8,10 +8,11 @@
   (:use [metrics.meters :only [meter mark!]]))
 
 
-(def next-meeting {:date "Thursday, February 23, 2012 at 6 PM"
-                   :topic "Writing The Roc Lisp Website in Noir"
-                   :location {:title "Coworking Rochester"
-                              :href "http://coworkingrochester.com/"}})
+; (def next-meeting {:date "Thursday, February 23, 2012 at 6 PM"
+;                    :topic "Writing The Roc Lisp Website in Noir"
+;                    :location {:title "Coworking Rochester"
+;                               :href "http://coworkingrochester.com/"}})
+(def next-meeting nil)
 
 (def hiccup-rendering (timer "hiccup-rendering"))
 (def total-page-views (counter "total-page-views"))
